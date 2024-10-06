@@ -5,8 +5,8 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
-import ImageModal from './components/ImageModal/ImageModal'; // Додайте імпорт компонента модального вікна
-import { Toaster } from 'react-hot-toast'; // Якщо ви використовуєте react-hot-toast
+import ImageModal from './components/ImageModal/ImageModal'; 
+import { Toaster } from 'react-hot-toast'; 
 
 export default function App() {
   const [images, setImages] = useState([]);
