@@ -24,38 +24,39 @@ export default function App() {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      setError(false);
+  const fetchData = async () => {
+    setError(false);
 
-      if (query === "") {
+    if (query === "") {
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const data = await fetchImages(query, page);
+
+      if (data.total === 0) {
+        setError(true);
         return;
       }
 
-      try {
-        setIsLoading(true);
-        const data = await fetchImages(query, page);
-        
-        
-        if (data.total === 0) {
-          setError(true);
-          return;
-        }
+      const totalResults = data.total;
+      const lastPage = Math.ceil(totalResults / 10); 
 
-        const totalResults = data.total;
-        const lastPage = Math.ceil(totalResults / page);
-        if (page === lastPage) {
-          setEndOfCollection(true);
-        }
-
-        setImages((prevImages) => [...prevImages, ...data.results]);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setIsLoading(false);
+      if (page >= lastPage) {
+        setEndOfCollection(true);
       }
-    };
-    fetchData();
-  }, [page, query]);
+
+      setImages((prevImages) => [...prevImages, ...data.results]);
+    } catch (error) {
+      setError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  fetchData();
+}, [page, query]);
+
 
   const openModal = (imageUrl) => {
     setModalImageUrl(imageUrl);
