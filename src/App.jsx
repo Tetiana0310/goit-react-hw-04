@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchImages } from './api';
-import SearchBar from './components/SearchBar/SearchBar';
+import Searchbar from './components/Searchbar/Searchbar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
@@ -76,7 +76,7 @@ export default function App() {
 
   return (
     <>
-      <SearchBar onSubmit={onSubmit} />
+      <Searchbar onSubmit={onSubmit} />
 
       {images.length > 0 && (
         <ImageGallery images={images} openModal={openModal} />

@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
-import css from "../SearchBar/SearchBar.module.css"
+import css from "../Searchbar/Searchbar.module.css"
 
-export default function SearchBar({ onSubmit }) {
+export default function Searchbar({ onSubmit }) {
     const onSearch = (event) => {
     event.preventDefault();
     const form = event.target;
