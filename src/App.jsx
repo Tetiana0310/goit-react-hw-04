@@ -57,7 +57,7 @@ export default function App() {
   fetchData();
 }, [page, query]);
 
-
+// Про модальне вікно
   const openModal = (imageUrl) => {
     setModalImageUrl(imageUrl);
     setModalIsOpen(true);
